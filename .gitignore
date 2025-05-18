@@ -1,0 +1,74 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider/JetBrains IDE
+.idea/
+
+# VS Code
+.vscode/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# IIS Express
+.vs/
+*.vspscc
+*.vssscc
+
+# Logs
+*.log
+logs/
+*.nlog
+*.serilog
+
+# Secrets
+appsettings.*.local.json
+secrets.json
+*.secret.config
+
+# dotnet-specific
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Test results
+TestResults/
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+.nuget/
+packages/
+*.psmdcp
+*.sdf
+
+# Publish output
+publish/
+out/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# Mac/Linux-specific
+.DS_Store
+*.sw?
+
+# Windows-specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
