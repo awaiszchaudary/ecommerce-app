@@ -8,8 +8,8 @@
 
         Task<TDto> GetByIdAsync(Guid id);
 
-        Task<TDto> CreateAsync(TEntity entity);
+        Task<TDto> CreateAsync(TDto tDto);
 
-        Task<TDto> UpdateAsync(TEntity entity);
+        Task<TDto> UpdateAsync(TDto dto);
     }
 }

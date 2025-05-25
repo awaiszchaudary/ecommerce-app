@@ -1,5 +1,7 @@
 using System.Text;
 using ecommerce_app.Data;
+using ecommerce_app.Profiles;
+using ecommerce_app.ServiceExtensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +17,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(option => 
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddAutoMapper(typeof(Program));
+
+RepositoryRegistrationExtension.RegisterRepositories(builder.Services);
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => {
     options.Password.RequiredLength = 6;
     options.Password.RequireNonAlphanumeric = false;
