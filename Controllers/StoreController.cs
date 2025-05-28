@@ -21,6 +21,28 @@ namespace ecommerce_app.Controllers
             _storeRepository = storeRepository;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var userId = User.GetUserId();
+            var stores = await _storeRepository.GetAllAsync(userId);
+
+            if (stores == null)
+                return NotFound();
+
+            return Ok(stores);
+        }
+
+        [HttpGet("id")]
+        public async Task<IActionResult> GetByIdAsync([FromQuery] Guid storeId)
+        {
+            var userId = User.GetUserId();
+            var store = await _storeRepository.GetAsync(storeId, userId);
+            if(store == null)
+                return NotFound();
+            return Ok(store);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Add(StoreDTO storeDTO)
         {
@@ -31,6 +53,16 @@ namespace ecommerce_app.Controllers
             storeDTO.UserId = userId;
 
             var store = await _storeRepository.CreateAsync(storeDTO);
+            return Ok(store);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(StoreDTO storeDTO)
+        {
+            storeDTO.UserId = User.GetUserId();
+            var store = await _storeRepository.UpdateAsync(storeDTO);
+            if (store == null)
+                return NotFound();
             return Ok(store);
         }
     }
